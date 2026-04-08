@@ -91,7 +91,13 @@
 <a href="#90" id="90">90</a>
 <a href="#91" id="91">91</a>
 <a href="#92" id="92">92</a>
-<a href="#93" id="93">93</a></pre></div><pre class="rust"><code><span class="kw">use </span><span class="kw">crate</span>::constants::STREAMING_SERVER_URL;
+<a href="#93" id="93">93</a>
+<a href="#94" id="94">94</a>
+<a href="#95" id="95">95</a>
+<a href="#96" id="96">96</a>
+<a href="#97" id="97">97</a>
+<a href="#98" id="98">98</a>
+<a href="#99" id="99">99</a></pre></div><pre class="rust"><code><span class="kw">use </span><span class="kw">crate</span>::constants::STREAMING_SERVER_URL;
 <span class="kw">use </span>chrono::{DateTime, Utc};
 <span class="kw">use </span>serde::{Deserialize, Serialize};
 <span class="kw">use </span>url::Url;
@@ -107,6 +113,7 @@
     <span class="kw">pub </span>binge_watching: bool,
     <span class="kw">pub </span>play_in_background: bool,
     <span class="kw">pub </span>hardware_decoding: bool,
+    <span class="kw">pub </span>video_mode: <span class="prelude-ty">Option</span>&lt;String&gt;,
     <span class="kw">pub </span>frame_rate_matching_strategy: FrameRateMatchingStrategy,
     <span class="kw">pub </span>next_video_notification_duration: u32,
     <span class="kw">pub </span>audio_passthrough: bool,
@@ -114,6 +121,7 @@
     <span class="kw">pub </span>secondary_audio_language: <span class="prelude-ty">Option</span>&lt;String&gt;,
     <span class="kw">pub </span>subtitles_language: <span class="prelude-ty">Option</span>&lt;String&gt;,
     <span class="kw">pub </span>secondary_subtitles_language: <span class="prelude-ty">Option</span>&lt;String&gt;,
+    <span class="kw">pub </span>subtitles_auto_select: bool,
     <span class="kw">pub </span>subtitles_size: u8,
     <span class="kw">pub </span>subtitles_font: String,
     <span class="kw">pub </span>subtitles_bold: bool,
@@ -122,6 +130,7 @@
     <span class="kw">pub </span>subtitles_background_color: String,
     <span class="kw">pub </span>subtitles_outline_color: String,
     <span class="kw">pub </span>subtitles_opacity: u8,
+    <span class="kw">pub </span>ass_subtitles_styling: bool,
     <span class="doccomment">/// Whether or not the Escape key should exists from the app when in Full screen.
     </span><span class="kw">pub </span>esc_exit_fullscreen: bool,
     <span class="doccomment">/// The Seek time duration (in milliseconds) is when using the Arrow keys
@@ -153,6 +162,7 @@
             binge_watching: <span class="bool-val">true</span>,
             play_in_background: <span class="bool-val">true</span>,
             hardware_decoding: <span class="bool-val">true</span>,
+            video_mode: <span class="prelude-val">None</span>,
             hide_spoilers: <span class="bool-val">false</span>,
             gamepad_support: <span class="bool-val">false</span>,
             frame_rate_matching_strategy: FrameRateMatchingStrategy::FrameRateOnly,
@@ -164,6 +174,7 @@
             secondary_audio_language: <span class="prelude-val">None</span>,
             subtitles_language: <span class="prelude-val">Some</span>(<span class="string">"eng"</span>.to_owned()),
             secondary_subtitles_language: <span class="prelude-val">None</span>,
+            subtitles_auto_select: <span class="bool-val">true</span>,
             subtitles_size: <span class="number">100</span>,
             subtitles_font: <span class="string">"Roboto"</span>.to_owned(),
             subtitles_bold: <span class="bool-val">false</span>,
@@ -172,6 +183,7 @@
             subtitles_background_color: <span class="string">"#00000000"</span>.to_owned(),
             subtitles_outline_color: <span class="string">"#000000"</span>.to_owned(),
             subtitles_opacity: <span class="number">100</span>,
+            ass_subtitles_styling: <span class="bool-val">false</span>,
             esc_exit_fullscreen: <span class="bool-val">true</span>,
             seek_time_duration: <span class="number">10000</span>,
             seek_short_time_duration: <span class="number">3000</span>,
